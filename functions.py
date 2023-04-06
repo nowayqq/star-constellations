@@ -64,3 +64,31 @@ def distance_to_prob(distance_matrix, size):
         for j in range(0, size):
             prob_matrix[i, j] = distance_matrix[i, j] / row_sums[i]
     return prob_matrix
+
+
+def Distance(numarr):
+    n, m = numarr.shape
+    dist_arr = np.empty((n, n))
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                dist_arr[i][j] = 0
+            else:
+                dist_arr[i][j] = 1000 * math.acos(
+                    math.sin(numarr[i][1]) * math.sin(numarr[j][1]) + math.cos(numarr[i][1]) * math.cos(
+                        numarr[j][1]) * math.cos(numarr[i][0] - numarr[j][0]))
+    return dist_arr
+
+
+def Probability(numarr):
+    n, m = numarr.shape
+    sum_arr = np.zeros(n)
+    for i in range(n):
+        for j in range(n):
+            sum_arr[i] += numarr[i][j]
+
+    p_arr = np.empty((n, n))
+    for i in range(n):
+        for j in range(n):
+            p_arr[i][j] = numarr[i][j] / sum_arr[i]
+    return p_arr
