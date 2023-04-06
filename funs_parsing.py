@@ -5,13 +5,7 @@ from urllib.request import urlopen
 import pandas as pd
 from bs4 import BeautifulSoup
 from tqdm import tqdm
-
-
-def make_it_beauty(s):
-
-    while len(s) < 36:
-        s += ' '
-    return s
+from functions import make_it_beauty
 
 
 def parse_url(lst):
