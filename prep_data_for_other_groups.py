@@ -6,6 +6,7 @@ from functions import make_it_beauty
 
 
 def get_data_borodinov(filenames):
+
     try:
         os.makedirs('data/data_borodinov')
     except:
@@ -20,6 +21,7 @@ def get_data_borodinov(filenames):
 
 
 def get_data_bobrov(filenames):
+
     try:
         os.makedirs('data/data_bobrov')
     except:
@@ -35,6 +37,7 @@ def get_data_bobrov(filenames):
 
 
 def get_data_moskovchenko(filenames):
+
     try:
         os.makedirs('data/data_moskovchenko')
     except:
@@ -54,6 +57,7 @@ def get_data_moskovchenko(filenames):
 
 
 def get_data_sidorov(filenames):
+
     try:
         os.makedirs('data/data_sidorov')
     except:

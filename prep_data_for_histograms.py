@@ -5,6 +5,7 @@ from functions import *
 
 
 def get_histograms(filenames):
+
     for i in range(len(filenames)):
         filenames[i] = filenames[i][5:]
 

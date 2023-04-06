@@ -5,9 +5,9 @@ from get_dist_and_prob_matrixes import get_matrixes
 
 
 # get_data(save=True)
+
 with open('filenames.csv') as f:
     filenames = f.read().split(',')[:-1]
-
 
 # get_histograms(filenames)
 # get_matrixes(filenames)

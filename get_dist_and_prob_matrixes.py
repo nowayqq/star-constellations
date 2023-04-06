@@ -4,6 +4,7 @@ from functions import *
 
 
 def get_matrixes(filenames):
+
     for i in range(len(filenames)):
         filenames[i] = filenames[i][5:]
     pi = 3.14159265

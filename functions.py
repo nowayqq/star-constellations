@@ -11,6 +11,7 @@ def make_it_beauty(s):
 
 
 def generate_data(size):
+
     thetas = np.random.randint(0, 360, size)
     phis = np.random.randint(-90, 91, size)
     rs = np.random.randint(40, 1000, size)
@@ -22,6 +23,7 @@ def generate_data(size):
 
 
 def read_constellation_data(constellation_name):
+
     constellation_data = pd.read_csv(f'data/data/{constellation_name}')
     constellation_data = constellation_data.dropna(subset=['Dist. (ly)'])
     constellation_data = constellation_data.loc[constellation_data['Dist. (ly)'] <= 1500]
@@ -41,6 +43,7 @@ def read_constellation_data(constellation_name):
 
 
 def calculate_distance(theta1, theta2, phi1, phi2, r1, r2):
+
     x1 = r1 * math.sin(theta1) * math.cos(phi1)
     y1 = r1 * math.sin(theta1) * math.sin(phi1)
     z1 = r1 * math.cos(theta1)
@@ -58,6 +61,7 @@ def calculate_distance(theta1, theta2, phi1, phi2, r1, r2):
 
 
 def distance_to_prob(distance_matrix, size):
+
     prob_matrix = np.zeros((size, size))
     row_sums = np.sum(distance_matrix, axis=1)
     for i in range(0, size):
@@ -67,6 +71,7 @@ def distance_to_prob(distance_matrix, size):
 
 
 def Distance(numarr):
+
     n, m = numarr.shape
     dist_arr = np.empty((n, n))
     for i in range(n):
@@ -81,6 +86,7 @@ def Distance(numarr):
 
 
 def Probability(numarr):
+
     n, m = numarr.shape
     sum_arr = np.zeros(n)
     for i in range(n):
