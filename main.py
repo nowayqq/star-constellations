@@ -4,7 +4,7 @@ from prep_data_for_histograms import get_histograms
 from get_dist_and_prob_matrixes import get_matrixes
 
 
-# get_data(save=True)
+get_data(save=True)
 
 with open('filenames.csv') as f:
     filenames = f.read().split(',')[:-1]
