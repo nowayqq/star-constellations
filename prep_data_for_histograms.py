@@ -4,7 +4,11 @@ import matplotlib.pyplot as plt
 from functions import *
 
 
-def get_histograms(filenames):
+def get_bins(l):
+    return math.floor(1 + 3.322 * math.log10(l))
+
+
+def get_histograms_dek(filenames):
 
     for i in range(len(filenames)):
         filenames[i] = filenames[i][5:]
@@ -47,10 +51,39 @@ def get_histograms(filenames):
         final_size = number * number
         distance = np.reshape(distance, final_size)
 
-        plt.hist(distance, bins=100, range=[0, 1500])
+        plt.hist(distance, bins=get_bins(number), range=[0, 1500])
         plt.xlabel('Расстояние')
         plt.ylabel('Количество')
-        plt.title('Гистограмма попарных расстояний', fontweight="bold")
+        plt.title('Гистограмма попарных расстояний в декартовых координатах', fontweight="bold")
+
+        plt.savefig(f'{name[:-4]}.png', transparent=True, dpi=200)
+        plt.close()
+        pbar.set_description(f'Processed {make_it_beauty(name[:-4])}')
+        pbar.update(1)
+    pbar.set_description('All histograms created')
+    pbar.close()
+    os.chdir(os.getcwd() + '\\..\\..')
+
+
+def get_histograms_sph(filenames):
+
+    for i in range(len(filenames)):
+        filenames[i] = filenames[i][5:]
+
+    try:
+        os.makedirs('data/result_thinh/')
+    except FileExistsError:
+        pass
+
+    os.chdir(os.getcwd() + '\\data\\result_thinh')
+    pbar = tqdm(total=88)
+    for name in filenames:
+        data = pd.read_csv(f'../result_borodinov/distance/Distance_{name.lower()}', header=None)
+
+        plt.hist(data.values.flatten(), bins=get_bins(len(data.values)))
+        plt.xlabel('Расстояние')
+        plt.ylabel('Количество')
+        plt.title('Гистограмма попарных расстояний в сферических координатах', fontweight="bold")
 
         plt.savefig(f'{name[:-4]}.png', transparent=True, dpi=200)
         plt.close()
